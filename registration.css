@@ -1,0 +1,348 @@
+/* Основные стили */
+body {
+    margin: 0;
+    font-family: "Noto Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Шапка */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Бургер-меню */
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Скрытый чекбокс */
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle:checked ~ .nav-menu {
+    display: flex;
+}
+
+.menu-toggle:checked + .burger-menu span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle:checked + .burger-menu span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle:checked + .burger-menu span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Меню */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: #FFD700;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #4CAF50;
+        width: 100%;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+    background-color: #f2f2f2;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.captcha-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#captchaCanvas {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#refreshCaptcha {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #0687f5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #046dcf;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Контент */
+.content {
+    padding: 100px 20px 20px; /* Учитывая фиксированную шапку */
+}
+
+.intro {
+    text-align: center;
+    padding: 20px;
+}
+
+.intro img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.intro p {
+    text-align: justify;
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/*Карточки*/
+body {
+    font-family: "Noto Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.categories {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.categories h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.category-card {
+    width: 30%;
+    max-width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.category-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.category-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.category-card h3 {
+    font-size: 1.5rem;
+    margin: 15px 15px 10px;
+    color: #333;
+}
+
+.category-card p {
+    font-size: 1rem;
+    margin: 0 15px 15px;
+    color: #555;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .category-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-card {
+        width: 100%;
+    }
+}
+
+
+
+
+/* Футер */
+.footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-btn {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: white;
+    color: #4CAF50;
+}

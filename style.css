@@ -1,0 +1,611 @@
+
+/* CSS-переменные */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #ffffff;
+    --text-color: #333333;
+    --font-family: 'Arial, sans-serif';
+    --transition-speed: 0.3s;
+    --button-hover-bg: rgba(255, 255, 255, 0.2);
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --glass-blur: 10px;
+    --card-hover-transform: scale(1.05);
+    --social-btn-size: 40px;
+}
+
+/* Основные стили  БУРГЕРА*/
+body {
+    margin: 0;
+    font-family: "Noto Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Шапка */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Бургер-меню */
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.burger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Скрытый чекбокс */
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle:checked ~ .nav-menu {
+    display: flex;
+}
+
+.menu-toggle:checked + .burger-menu span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle:checked + .burger-menu span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle:checked + .burger-menu span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Меню */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: #FFD700;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #4CAF50;
+        width: 100%;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+.benefit-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.benefit-item {
+    flex: 1 1 45%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.benefit-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* Responsive Gallery */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* Мозаичный вид */
+.item-1 {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.item-4 {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+/* Адаптив для мобильных устройств */
+@media (max-width: 768px) {
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 150px);
+    }
+
+    .item-1,
+    .item-4 {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+}
+
+
+
+.intro {
+    background-image: url('backgroundphotohappygirl1.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--secondary-color);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.intro h2 {
+    font-size: 2em;
+}
+
+.intro p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.intro button {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 15px 30px;
+    color: var(--secondary-color);
+    font-size: 1em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.intro button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--button-hover-bg);
+    transition: all var(--transition-speed) ease;
+}
+
+.intro button:hover::before {
+    left: 0;
+}
+
+.intro button:hover {
+    background-color: #45a049;
+}
+/* Основные стили для футера */
+
+
+/* Футер */
+.footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-btn {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.social-btn:hover {
+    background-color: white;
+    color: #4CAF50;
+}
+
+
+/* Секция кнопок */
+.buttons-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: var(--secondary-color);
+}
+
+.buttons-section h2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+}
+
+/* Контейнер кнопок */
+.buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Общие стили для кнопок */
+.btn {
+    position: relative;
+    padding: 15px 30px;
+    font-size: 1rem;
+    color: var(--secondary-color);
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all var(--transition-speed) ease;
+}
+
+/* Кнопка 1 */
+.btn-1 {
+    background-color: #4CAF50;
+}
+
+.btn-1::before,
+.btn-1::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-1::before {
+    top: 0;
+    left: -100%;
+}
+
+.btn-1::after {
+    bottom: 0;
+    right: -100%;
+}
+
+.btn-1:hover::before {
+    left: 0;
+}
+
+.btn-1:hover::after {
+    right: 0;
+}
+
+/* Кнопка 2 */
+.btn-2 {
+    background-color: #2196F3;
+    transform: scale(1);
+}
+
+.btn-2::before {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.btn-2:hover {
+    transform: scale(1.1);
+}
+
+.btn-2:hover::before {
+    opacity: 1;
+}
+
+/* Кнопка 3 */
+.btn-3 {
+    background-color: #f44336;
+    border-radius: 50px;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.btn-3::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.btn-3:hover::before {
+    width: 200%;
+    height: 200%;
+}
+
+.btn-3:hover {
+    background-color: #d32f2f;
+}
+
+/* Кнопка 4 */
+.btn-4 {
+    background-color: #FF9800;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-45deg);
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-4:hover::before {
+    left: 100%;
+}
+
+.btn-4:hover {
+    background-color: #FB8C00;
+}
+
+
+
+/* Анимированные квадраты */
+.animated-squares {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.animated-squares .square {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    animation: moveSquare 5s infinite;
+    border-radius: 4px;
+}
+
+.animated-squares .square:nth-child(1) {
+    top: 10%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.animated-squares .square:nth-child(2) {
+    top: 50%;
+    left: 80%;
+    animation-delay: 1s;
+}
+
+.animated-squares .square:nth-child(3) {
+    top: 70%;
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.animated-squares .square:nth-child(4) {
+    top: 30%;
+    left: 60%;
+    animation-delay: 3s;
+}
+
+@keyframes moveSquare {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(calc(var(--x, 50px)), calc(var(--y, 50px))) rotate(360deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(720deg);
+    }
+}
+
+
+/*Секция с faq*/ 
+.faq-section {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 800px;
+    text-align: left;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.faq-question {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    padding: 15px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f0f0f0;
+}
+
+.faq-answer {
+    display: none;
+    padding: 10px 15px;
+    background-color: #fff;
+    color: #666;
+    font-size: 16px;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .faq-question {
+    background-color: #e0e0e0;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.related-articles {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.related-articles h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.articles-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.article-card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    width: 48%;
+    transition: transform 0.3s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+}
+
+.article-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.article-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.article-card h3 {
+    font-size: 18px;
+    margin: 15px 15px 10px;
+}
+
+.article-card p {
+    font-size: 14px;
+    margin: 0 15px 15px;
+    color: #555;
+}
